@@ -33,12 +33,12 @@ jobs:
         pipenv sync --dev
     - name: Lint with flake8
       run: |
-        pip run flake8 .
+        pipenv run flake8 .
     - name: Test with pytest
       run: |
-         pip run pytest --cov=projeto
+         pipenv run pytest --cov=projeto
     - name: Posting Coverage
       env:
         CODECOV_TOKEN: "5f29b529-939d-450f-807b-463ad2b0bce8"
       run: |
-        pip run codecov
+        pipenv run codecov
