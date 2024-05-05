@@ -1,0 +1,1 @@
+path('', include('recipes.urls'))

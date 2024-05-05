@@ -1,2 +1,2 @@
 # curso-django-udemy
-Módulo de aprendizado com projeto Django
+Módulo de aprendizado com project Django

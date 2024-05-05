@@ -1,5 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=65)
+
+    def __str__(self):
+        return self.name
 
 class Recipe(models.Model):
     #title: Um CharField com um máximo de 65 caracteres, representando o título da receita.
@@ -35,10 +42,12 @@ class Recipe(models.Model):
 
     #created_at: Um DateTimeField que registra automaticamente 
     #a data e hora em que a instância da receita é criada.
+    #data e hora
     created_at = models.DateTimeField(auto_now_add=True)
 
     #updated_at: Um DateTimeField que é atualizado automaticamente para a 
     #data e hora atual sempre que a instância da receita é modificada.
+    #data e hora
     updated_at = models.DateTimeField(auto_now=True)
 
     #is_published: Um BooleanField indicando se a receita foi publicada.
@@ -46,8 +55,20 @@ class Recipe(models.Model):
 
     #cover: Um ImageField usado para fazer upload de uma imagem de capa para a receita. 
     #É armazenado no diretório especificado com um caminho dinâmico baseado na data de upload.
-    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/')
+    #é um tipo de campo utilizado para representar campos de modelo que armazenam imagens. 
+    #Este campo é usado quando você precisa armazenar arquivos de imagem em seu banco de dados.
+    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/', blank=True, default='')
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True, default=None,
+    )
 
+    author = models.ForeignKey( 
+        User, on_delete=models.SET_NULL, null=True
+    )
+    
+    def __str__(self):
+        return self.title
+    
 # EDITED
 # title description slug
 # preparation_time preparation_time_unit
