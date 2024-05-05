@@ -2,11 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length=65)
 
     def __str__(self):
         return self.name
+
 
 class Recipe(models.Model):
     #title: Um CharField com um máximo de 65 caracteres, representando o título da receita.
@@ -46,7 +48,6 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     #updated_at: Um DateTimeField que é atualizado automaticamente para a 
-    #data e hora atual sempre que a instância da receita é modificada.
     #data e hora
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -68,7 +69,9 @@ class Recipe(models.Model):
     
     def __str__(self):
         return self.title
-    
+
+
+
 # EDITED
 # title description slug
 # preparation_time preparation_time_unit

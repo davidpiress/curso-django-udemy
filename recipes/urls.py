@@ -1,5 +1,6 @@
 # urls.py dentro do aplicativo 'recipes'
 
+
 from django.urls import path
 from . import views
 
@@ -11,4 +12,3 @@ urlpatterns = [
     path('recipes/<int:id>/', views.recipe, name='recipe'),  # Exemplo de URL com namespace
     # outras URLs do seu aplicativo
 ]
-
